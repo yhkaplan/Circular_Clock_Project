@@ -113,12 +113,12 @@ int getMinutePosition(int minuteValue) {
   return adjustReturnVal(returnValue);
 }
 
-int adjustReturnVal(int value) {
-  if (value == 0) {
+int adjustReturnVal(int value) {  
+  if (value == pixels.numPixels()) {
     return 0;
-  } else {
-    return value - 1;
   }
+  
+  return value;
 }
 
 void clearOtherPixels(int pixelOne, int pixelTwo) {
@@ -144,7 +144,9 @@ void clearPreviousIndex(int i) {
 void debugPrintTime(int hourValue, int minuteValue) {
   Serial.print(hourValue, DEC);
   Serial.print(':');
+  if (minuteValue < 10) {
+    Serial.print("0");
+  } 
   Serial.print(minuteValue, DEC);
-  Serial.print(\n);
+  Serial.print("\n");
 }
-
